@@ -1,18 +1,21 @@
-# CentOS 6 based container with ssh & supervisord installed
-#
+FROM stackinabox/ibm-java:7.1-3.40
 
-FROM centos:centos6
 MAINTAINER Tim Pouyer <tpouyer@us.ibm.com>
 
-RUN /usr/bin/yum -y update && \
-/usr/bin/yum -y install openssh-server openssh-clients python-setuptools wget unzip git && \
-/usr/bin/easy_install supervisor
+# Pass in the location of the UCD agent install zip 
+ARG ARTIFACT_DOWNLOAD_URL
+ARG ARTIFACT_VERSION
 
-ADD authorized_keys /root/.ssh/authorized_keys
-ADD supervisord.id_rsa.pub /root/.ssh/supervisord.id_rsa.pub
-ADD supervisord.conf /etc/supervisord.conf
+RUN apt-get update && \
+	apt-get install -qqy --no-install-recommends python-setuptools supervisor && \
+	apt-get clean -y && \
+	apt-get autoclean -y && \
+	apt-get autoremove -y && \
+	rm -rf /var/lib/apt/lists/*
+
+# Add startup.sh script and addtional supervisord config
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD supervisord-startup.sh /bin/supervisord-startup.sh
 
-CMD /bin/supervisord-startup.sh
-
-EXPOSE 22
+ENTRYPOINT ["/bin/supervisord-startup.sh"]
+CMD []

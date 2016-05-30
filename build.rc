@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export ARTIFACT_DOWNLOAD_URL=
+export ARTIFACT_VERSION=3.2.2
+
+export DOCKER_EMAIL=tim.pouyer@gmail.com
+export DOCKER_USERNAME=tpouyer
+export DOCKER_PASSWORD=74ac9z35
