@@ -14,5 +14,4 @@ IP_ADDRESS=$(ifconfig $IFC | grep 'inet addr' | awk -F : {'print $2'} | awk {'pr
 echo "This node has an IP of " $IP_ADDRESS
 hostname web.$IP_ADDRESS.xip.io
 
-
-/usr/bin/supervisord
+/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
