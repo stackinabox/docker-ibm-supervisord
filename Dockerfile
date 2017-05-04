@@ -1,4 +1,5 @@
-FROM stackinabox/ibm-java:7.1-3.40
+#FROM stackinabox/ibm-java:7.1-3.40
+FROM ibmcom/ibmjava:8-jre
 
 MAINTAINER Tim Pouyer <tpouyer@us.ibm.com>
 
@@ -7,7 +8,7 @@ ARG ARTIFACT_DOWNLOAD_URL
 ARG ARTIFACT_VERSION
 
 RUN apt-get update && \
-	apt-get install -qqy --no-install-recommends python-setuptools supervisor && \
+	apt-get install -qqy --no-install-recommends net-tools curl wget bzip2 unzip python-setuptools supervisor && \
 	apt-get clean -y && \
 	apt-get autoclean -y && \
 	apt-get autoremove -y && \
