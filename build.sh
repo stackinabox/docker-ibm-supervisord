@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-source ./build.rc
+#source ./build.rc
 
 ARTIFACT_VERSION=${ARTIFACT_VERSION:-latest}
 
