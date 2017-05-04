@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/stackinabox/docker-ibm-supervisord.svg?branch=master)](https://travis-ci.org/stackinabox/docker-ibm-supervisord)
+
 # Base Docker Image for ssh and supervisord
 
 This docker image will configure ssh and supervisord to run in a docker container. This
